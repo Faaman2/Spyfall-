@@ -1,0 +1,43 @@
+import random
+players = []
+type_place = ["house", "park", "hospital","gym","shop","casino","mosque","post office"]
+type_object = ["pen", "lamp", "bottle","speaker","bowl","sciccor","brush","headphone"]
+  
+
+num_players = int(input("Hello welcome to spyfall enter the number of player that are player MAX PLAYER 9: "))
+if num_players > 9: 
+  num_players = int(input("Hello welcome to spyfall enter the number of plyer that are playing MAX PLAYER 9: "))
+
+for i in range(num_players):
+  name = input(f"Enter name for player {i+1}: ")
+  players.append(name)
+
+num_spy = int(input("Ok now input the number of spys in this game however the number of spies have to be less than half of players: "))
+while num_spy > num_players / 2: 
+  num_spy = int(input("Ok now input the number of spys in this game however the number of spies have to be less than half of players: "))
+
+catergory = input("Now pick from the two catergory place or object? ").strip().lower()
+while catergory not in ("place", "object"):
+  catergory = input("Now pick from the two catergory place or object? ").strip().lower()
+
+if catergory == "place":
+    secret_word = random.choice(type_place)
+elif catergory == "object":
+    secret_word = random.choice(type_object)
+
+spies = random.sample(players, num_spy)
+
+assignments = {}
+for player in players:
+    if player in spies:
+        assignments[player] = "SPY"
+    else:
+        assignments[player] = secret_word
+
+print("\n--- Assignments ---")
+for player, role in assignments.items():
+    print(f"{player}: {role}")
+
+
+
+
