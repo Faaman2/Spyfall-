@@ -4,19 +4,19 @@ type_place = ["house", "park", "hospital","gym","shop","casino","mosque","post o
 type_object = ["pen", "lamp", "bottle","speaker","bowl","sciccor","brush","headphone"]
   
 
-num_players = int(input("Hello welcome to spyfall enter the number of player that are player MAX PLAYER 9: "))
-if num_players > 9: 
-  num_players = int(input("Hello welcome to spyfall enter the number of plyer that are playing MAX PLAYER 9: "))
+num_players = 999 
+while num_players > 9: 
+  num_players = int(input("Hello welcome to spyfall enter the number of player that are playing MAX PLAYER 9: "))
 
 for i in range(num_players):
   name = input(f"Enter name for player {i+1}: ")
   players.append(name)
 
-num_spy = int(input("Ok now input the number of spys in this game however the number of spies have to be less than half of players: "))
+num_spy = 999 
 while num_spy > num_players / 2: 
   num_spy = int(input("Ok now input the number of spys in this game however the number of spies have to be less than half of players: "))
 
-catergory = input("Now pick from the two catergory place or object? ").strip().lower()
+catergory = None
 while catergory not in ("place", "object"):
   catergory = input("Now pick from the two catergory place or object? ").strip().lower()
 
@@ -34,10 +34,9 @@ for player in players:
     else:
         assignments[player] = secret_word
 
-print("\n--- Assignments ---")
+print("--- Assignments ---")
 for player, role in assignments.items():
     print(f"{player}: {role}")
-
 
 
 
